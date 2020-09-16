@@ -1,3 +1,33 @@
+Увеличивающаяся сложность (параметр в запросе, непример количество строк)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+powershell (Invoke-WebRequest -Method POST -Body 'SELECT version()' 'http://localhost:8123/').content
 powershell (Invoke-WebRequest -Method POST -Body 'CREATE TABLE s (a UInt8) ENGINE = Memory' 'http://localhost:8123/').content
 powershell (Invoke-WebRequest -Method POST -Body 'SHOW CREATE TABLE s' 'http://localhost:8123/').content
 
+docker run -d --name some-clickhouse-server --ulimit nofile=262144:262144 -p 8123:8123 -p 9000:9000 yandex/clickhouse-server
+docker run -it --rm --link some-clickhouse-server:clickhouse-server yandex/clickhouse-client --host clickhouse-server
+
+echo SELECT version() > select_version.txt
+ab -p select_version.txt -T plain/text -c 10 -n 2000 http://localhost:8123/
+
+echo SELECT 1 > select_1.txt
+ab -p select_1.txt -T plain/text -c 10 -n 2000 http://localhost:8123/
+
+echo SELECT a > select_a.txt
+ab -p select_a.txt -T plain/text -c 10 -n 2000 http://localhost:8123/
+
+echo SELECT rand(), rand(1), rand(number), randConstant(), randConstant(1), randConstant(number) FROM numbers(3) > randoms.txt
+ab -p randoms.txt -T plain/text -c 10 -n 2000 http://localhost:8123/
