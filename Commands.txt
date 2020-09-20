@@ -1,17 +1,4 @@
-Увеличивающаяся сложность (параметр в запросе, непример количество строк)
-
-
-
-
-
-
-
-
-
-
-
-
-
+Увеличивающаяся сложность (параметр в запросе, например количество строк)
 
 powershell (Invoke-WebRequest -Method POST -Body 'SELECT version()' 'http://localhost:8123/').content
 powershell (Invoke-WebRequest -Method POST -Body 'CREATE TABLE s (a UInt8) ENGINE = Memory' 'http://localhost:8123/').content
@@ -19,6 +6,8 @@ powershell (Invoke-WebRequest -Method POST -Body 'SHOW CREATE TABLE s' 'http://l
 
 docker run -d --name some-clickhouse-server --ulimit nofile=262144:262144 -p 8123:8123 -p 9000:9000 yandex/clickhouse-server
 docker run -it --rm --link some-clickhouse-server:clickhouse-server yandex/clickhouse-client --host clickhouse-server
+docker run -d --name graphite --restart=always -p 80:80 -p 2003-2004:2003-2004 -p 2023-2024:2023-2024 -p 8125:8125/udp -p 8126:8126 graphiteapp/graphite-statsd
+docker start some-clickhouse-server
 
 echo SELECT version() > select_version.txt
 ab -p select_version.txt -T plain/text -c 10 -n 2000 http://localhost:8123/
@@ -31,3 +20,5 @@ ab -p select_a.txt -T plain/text -c 10 -n 2000 http://localhost:8123/
 
 echo SELECT rand(), rand(1), rand(number), randConstant(), randConstant(1), randConstant(number) FROM numbers(3) > randoms.txt
 ab -p randoms.txt -T plain/text -c 10 -n 2000 http://localhost:8123/
+
+sbt new gatling/gatling.g8
