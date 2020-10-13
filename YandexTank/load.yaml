@@ -1,0 +1,18 @@
+#docker run -v d:\temp\yt:/var/loadtest -v $SSH_AUTH_SOCK:/ssh-agent -e SSH_AUTH_SOCK=/ssh-agent  --net host -it direvius/yandex-tank
+#docker run -v %cd%:/var/loadtest --net host -it direvius/yandex-tank
+phantom:
+  #address: postman-test.dev.kontur.ru:1234 # [Target's address]:[target's port]
+  address: localhost:8123
+  header_http: "1.1"
+  headers:
+    - "[Host: localhost]"
+    - "[Connection: close]"
+  uris:
+    - /ping
+  load_profile:
+    load_type: rps # schedule load by defining requests per second
+    schedule: line(1, 10, 10m) # starting from 1rps growing linearly to 10rps during 10 minutes
+console:
+  enabled: true # enable console output
+telegraf:
+  enabled: false # let's disable telegraf monitoring for the first time
