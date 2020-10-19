@@ -1,0 +1,5 @@
+ссылки
+
+https://docs.docker.com/docker-for-windows/install/
+https://grafana.com/grafana/dashboards/3351
+https://grafana.com/grafana/dashboards/9935

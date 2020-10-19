@@ -22,3 +22,17 @@ echo SELECT rand(), rand(1), rand(number), randConstant(), randConstant(1), rand
 ab -p randoms.txt -T plain/text -c 10 -n 2000 http://localhost:8123/
 
 sbt new gatling/gatling.g8
+
+https://hub.docker.com/r/philhawthorne/docker-influxdb-grafana/
+docker run -d --name docker-influxdb-grafana -p 3003:3003 -p 3004:8083 -p 8086:8086 philhawthorne/docker-influxdb-grafana:latest
+ 
+#  -v /path/for/influxdb:/var/lib/influxdb \
+#  -v /path/for/grafana:/var/lib/grafana \
+#  philhawthorne/docker-influxdb-grafana:latest
+
+curl -POST http://localhost:8086/query --data-urlencode "q=CREATE DATABASE jmeter"
+powershell (Invoke-WebRequest -Method POST -Body 'q=CREATE DATABASE jmeter' 'http://localhost:8086/query').content
+
+https://grafana.com/grafana/dashboards/3351
+
+https://grafana.com/grafana/dashboards/9935

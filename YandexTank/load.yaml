@@ -16,3 +16,11 @@ console:
   enabled: true # enable console output
 telegraf:
   enabled: false # let's disable telegraf monitoring for the first time
+influx:
+  enabled: true
+  address: localhost
+  port: 8086
+  database: tank
+  tank_tag: 'mytank'
+  prefix_measurement: 'your_test_prefix_'
+  labeled: true
