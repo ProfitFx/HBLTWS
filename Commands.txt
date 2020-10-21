@@ -3,6 +3,9 @@
 powershell (Invoke-WebRequest -Method POST -Body 'SELECT version()' 'http://localhost:8123/').content
 powershell (Invoke-WebRequest -Method POST -Body 'CREATE TABLE s (a UInt8) ENGINE = Memory' 'http://localhost:8123/').content
 powershell (Invoke-WebRequest -Method POST -Body 'SHOW CREATE TABLE s' 'http://localhost:8123/').content
+powershell (Invoke-WebRequest -Method POST -Body 'CREATE TABLE events(event_date Date, event_time DateTime,event_id UUID, event_data String) engine=MergeTree(event_date,(event_id), 8192)' 'http://localhost:8123/').content
+
+INSERT INTO events(event_date, event_time,event_id, event_data), values ('2019-01-01', '2019-01-01 00:00:00', 'bf20c16a-13cb-11eb-adc1-0242ac120002', 'someText')
 
 docker run -d --name some-clickhouse-server --ulimit nofile=262144:262144 -p 8123:8123 -p 9000:9000 yandex/clickhouse-server
 docker run -it --rm --link some-clickhouse-server:clickhouse-server yandex/clickhouse-client --host clickhouse-server
