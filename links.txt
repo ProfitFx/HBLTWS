@@ -1,5 +1,22 @@
 ссылки
-
+Уствновка Docker
 https://docs.docker.com/docker-for-windows/install/
+Clickhouse
+https://clickhouse.tech/docs/ru/
+
+https://jmeter.apache.org/
+https://jmeter-plugins.org/wiki/PluginsManager/
+
+https://gatling.io
+https://gatling.io/docs/current/extensions/sbt_plugin/
+
+YandexTank
+https://yandex.ru/dev/tank/?turbo=true
+https://yandextank.readthedocs.io/en/latest/
+
+Дашборды для метрик
 https://grafana.com/grafana/dashboards/3351
 https://grafana.com/grafana/dashboards/9935
+
+
+

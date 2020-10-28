@@ -11,7 +11,7 @@ phantom:
     - /ping
   load_profile:
     load_type: rps # schedule load by defining requests per second
-    schedule: line(1, 100, 3m) # starting from 1rps growing linearly to 10rps during 10 minutes
+    schedule: line(1, 100, 3m) const(100,1m) # starting from 1rps growing linearly to 100rps during 3 minutes
 console:
   enabled: true # enable console output
 telegraf:
