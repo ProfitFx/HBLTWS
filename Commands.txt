@@ -1,14 +1,27 @@
 TODO: 
 Зафиксировать версии в докерах
-Сделать экспресс инструкцию для включения docker
 
 Увеличивающаяся сложность (параметр в запросе, например количество строк)
 
+#Экспресс команды docker
+#Создание контейнера
+docker run <options> <image>
+#Запуск уже созданного контейнера
+docker start <name/id>
+#Остановка контейнера
+docker stop <name/id>
+#Удаление контейнера
+docker rm <name/id>
+#Просмотр работающих контейнеров 
+docker ps
+#Просмотр всех контейнеров, в т.ч. остановленных
+docker ps -a
+
 powershell (Invoke-WebRequest -Method POST -Body 'SELECT version()' 'http://localhost:8123/').content
 powershell measure-command{(Invoke-WebRequest -Method POST -Body 'SELECT version()' 'http://localhost:8123/').content}
-powershell (Invoke-WebRequest -Method POST -Body 'CREATE TABLE s (a UInt8) ENGINE = Memory' 'http://localhost:8123/').content
-powershell (Invoke-WebRequest -Method POST -Body 'SHOW CREATE TABLE s' 'http://localhost:8123/').content
-powershell (Invoke-WebRequest -Method POST -Body 'CREATE TABLE events_mem (event_date Date, event_time DateTime, event_id UUID, event_data String) ENGINE = Memory' 'http://localhost:8123/').content
+#powershell (Invoke-WebRequest -Method POST -Body 'CREATE TABLE s (a UInt8) ENGINE = Memory' 'http://localhost:8123/').content
+#powershell (Invoke-WebRequest -Method POST -Body 'SHOW CREATE TABLE s' 'http://localhost:8123/').content
+#powershell (Invoke-WebRequest -Method POST -Body 'CREATE TABLE events_mem (event_date Date, event_time DateTime, event_id UUID, event_data String) ENGINE = Memory' 'http://localhost:8123/').content
 powershell (Invoke-WebRequest -Method POST -Body 'CREATE TABLE events(event_date Date, event_time DateTime,event_id UUID, event_data String) engine=MergeTree(event_date,(event_id), 8192)' 'http://localhost:8123/').content
 
 INSERT INTO events(event_date, event_time, event_id, event_data), values ('2019-01-01', '2019-01-01 00:00:00', 'bf20c16a-13cb-11eb-adc1-0242ac120002', 'someText')
