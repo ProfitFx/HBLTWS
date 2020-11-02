@@ -41,11 +41,13 @@ powershell measure-command{(Invoke-WebRequest -Method POST -Body 'SELECT version
 
 #https://hub.docker.com/r/philhawthorne/docker-influxdb-grafana/
 docker run -d --name docker-influxdb-grafana -p 3003:3003 -p 3004:8083 -p 8086:8086 philhawthorne/docker-influxdb-grafana:latest
-explorer http://localhost:3003
-
- 
-
-
-curl -POST http://localhost:8086/query --data-urlencode "q=CREATE DATABASE jmeter"
 powershell (Invoke-WebRequest -Method POST -Body 'q=CREATE DATABASE jmeter' 'http://localhost:8086/query').content
+#curl -POST http://localhost:8086/query --data-urlencode "q=CREATE DATABASE jmeter"
+explorer http://localhost:3003
+#root/root
+#Add your first data source -> influxDB -> url: http://localhost:8086 database: jmeter -> save and test
+#Import 5496 -> select datasource influxDB
+
+
+
 
