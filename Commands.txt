@@ -48,6 +48,11 @@ explorer http://localhost:3003
 #Add your first data source -> influxDB -> url: http://localhost:8086 database: jmeter -> save and test
 #Import 5496 -> select datasource influxDB
 
+#jmeter -n -t [jmx file] -l [results file] -e -o [Path to web report folder]
+
+## jdbc
+#https://github.com/housepower/ClickHouse-Native-JDBC
+
 
 
 
