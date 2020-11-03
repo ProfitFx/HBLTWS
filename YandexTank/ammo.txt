@@ -1,0 +1,27 @@
+127 
+POST / HTTP/1.1
+Host: hostname.com
+User-Agent: tank
+Accept: */*
+Connection: Close
+Content-Length: 16
+
+SELECT version()
+127 
+POST / HTTP/1.1
+Host: hostname.com
+User-Agent: tank
+Accept: */*
+Connection: Close
+Content-Length: 16
+
+SELECT version()
+127 
+POST / HTTP/1.1
+Host: hostname.com
+User-Agent: tank
+Accept: */*
+Connection: Close
+Content-Length: 16
+
+SELECT version()
